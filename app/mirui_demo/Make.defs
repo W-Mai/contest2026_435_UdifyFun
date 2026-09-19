@@ -1,0 +1,7 @@
+############################################################################
+# Contest 2026 team 435 (UdifyFun) mirui_demo - Make.defs
+############################################################################
+
+ifneq ($(CONFIG_LVX_USE_DEMO_CONTEST2026_435_MIRUI_DEMO),)
+CONFIGURED_APPS += $(APPDIR)/packages/demos/contest2026_435_mirui_demo
+endif

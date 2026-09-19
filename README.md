@@ -115,6 +115,17 @@ python3 app/apollia_hub/tools/uart_midi_bridge.py   # 端口自动探测
 
 > **为什么是 UART 桥接**：本发布版 BSP 未包含 NuttX USB 设备控制器驱动（DCD），无法做 USB-MIDI class 枚举；Hub 经板载 USB-串口桥输出标准 MIDI 字节流，PC 侧一行脚本还原为真实 MIDI 端口，DAW 体验与 USB-MIDI 等价。桥接脚本自带噪声容错（控制台共线）与 macOS/Linux 端口自动探测。
 
+### 附：mirui Rust demo（`feat/mirui-port` 分支）
+
+该分支额外移植了 [mirui](https://mirui.rs)（`no_std` ECS Rust UI 框架），开机运行上游三体物理 demo。依赖不随仓提交，**首次构建前联网执行一次**：
+
+```bash
+bash app/mirui_demo/fetch_deps.sh   # cargo vendor 依赖树 + 软链 registry
+./build.sh vendor/bes/boards/best1700_ep/aos_evb/configs/ap --cmake -j8
+```
+
+> 需要 nightly Rust + `rust-src` 组件（`thumbv8m.main-nuttx-eabihf` 无预编译 std，构建时用 `-Zbuild-std` 现场编译）。板级配套改动在 vendor_bes 的 `bes1700-apollia-hub` 分支。
+
 ### 5. 开机即玩
 
 烧录后自动进入 Apollia Hub：

@@ -1,0 +1,16 @@
+#
+# For a description of the syntax of this configuration file,
+# see the file kconfig-language.txt in the NuttX tools repository.
+#
+
+config LVX_USE_DEMO_CONTEST2026_435_MIRUI_DEMO
+	bool "Contest 2026 team 435 mirui three-body demo (Rust)"
+	default n
+	depends on VIDEO_FB
+	---help---
+		Enable the contest 2026 team 435 (UdifyFun) port of the mirui
+		no_std ECS UI framework (https://mirui.rs, MIT). Renders the
+		upstream three-body physics demo on the round screen through
+		the NuttX framebuffer backend and software renderer.
+		Requires nightly cargo with -Zbuild-std for the
+		thumbv8m.main-nuttx-eabihf target.

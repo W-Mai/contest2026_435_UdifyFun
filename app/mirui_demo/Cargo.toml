@@ -1,0 +1,13 @@
+[package]
+name = "mirui_demo"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+
+[dependencies]
+# Path dependency on the vendored copy (app/mirui_demo/vendor/mirui):
+# the Vela build runs cargo in offline mode with a vendored registry,
+# so a git dependency cannot be resolved. The vendor/ tree is linked to
+# external/rust/registry by the contest manifest for reproducibility.
+mirui = { path = "vendor/mirui", default-features = false, features = ["nuttx", "gallery", "quad-aa"] }
